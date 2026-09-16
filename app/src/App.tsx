@@ -28,6 +28,8 @@ import { MaterialPricing } from '@/pages/MaterialPricing'
 import { EstimatingIntegrations } from '@/pages/EstimatingIntegrations'
 import type { PageRoute } from '@/types'
 import { Toaster } from 'sonner'
+import { AuthProvider, useAuth } from '@/context/AuthContext'
+import { AuthScreen } from '@/pages/AuthScreen'
 
 const pageConfig: Record<PageRoute, { title: string; subtitle: string }> = {
   dashboard: { title: 'Dashboard', subtitle: 'Real-time construction accounting overview' },
@@ -59,6 +61,16 @@ const pageConfig: Record<PageRoute, { title: string; subtitle: string }> = {
 }
 
 export function App() {
+  return (
+    <AuthProvider>
+      <AppShell />
+      <Toaster position="bottom-right" />
+    </AuthProvider>
+  )
+}
+
+function AppShell() {
+  const { session, user, loading } = useAuth()
   const [currentPage, setCurrentPage] = useState<PageRoute>('dashboard')
   const [selectedProjectId, setSelectedProjectId] = useState<string>('')
   const [selectedTaskId, setSelectedTaskId] = useState<string>('st3')
@@ -83,6 +95,18 @@ export function App() {
   }
 
   const config = pageConfig[currentPage]
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-canvas flex items-center justify-center">
+        <div className="h-10 w-10 animate-spin rounded-full border-4 border-line border-t-signal" />
+      </div>
+    )
+  }
+
+  if (!session) {
+    return <AuthScreen />
+  }
 
   const renderPage = () => {
     switch (currentPage) {

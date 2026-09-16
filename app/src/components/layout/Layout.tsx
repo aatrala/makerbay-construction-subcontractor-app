@@ -3,6 +3,7 @@ import { cn } from '@/lib/utils'
 import { Sidebar } from './Sidebar'
 import { Bell, Search, Menu } from 'lucide-react'
 import type { PageRoute } from '@/types'
+import { useAuth } from '@/context/AuthContext'
 
 interface LayoutProps {
   children: ReactNode
@@ -14,6 +15,14 @@ interface LayoutProps {
 
 export function Layout({ children, currentPage, onNavigate, title, subtitle }: LayoutProps) {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
+  const { user, signOut } = useAuth()
+  const name = (user?.user_metadata?.full_name as string | undefined) ?? user?.email ?? 'User'
+  const initials = name
+    .split(' ')
+    .map((part) => part[0])
+    .slice(0, 2)
+    .join('')
+    .toUpperCase()
 
   return (
     <div className="min-h-screen bg-canvas">
@@ -59,9 +68,16 @@ export function Layout({ children, currentPage, onNavigate, title, subtitle }: L
               <span className="absolute right-1.5 top-1.5 h-2 w-2 rounded-full bg-signal" />
             </button>
             <div className="ml-2 flex items-center gap-2">
-              <div className="h-8 w-8 rounded-full bg-violet text-white flex items-center justify-center text-xs font-bold">
-                JM
-              </div>
+              <span className="hidden sm:block text-sm font-semibold text-ink">
+                {(user?.user_metadata?.full_name as string | undefined) ?? 'User'}
+              </span>
+              <button
+                onClick={signOut}
+                title="Sign out"
+                className="h-8 w-8 rounded-full bg-signal text-white flex items-center justify-center text-xs font-bold hover:opacity-90 transition-opacity cursor-pointer"
+              >
+                {initials}
+              </button>
             </div>
           </div>
         </header>
