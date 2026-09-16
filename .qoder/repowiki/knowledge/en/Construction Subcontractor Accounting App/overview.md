@@ -1,0 +1,1 @@
+A React + Vite frontend application that presents construction accounting dashboards and job workflows over mock data, guided by product spec and design-stack playbooks.

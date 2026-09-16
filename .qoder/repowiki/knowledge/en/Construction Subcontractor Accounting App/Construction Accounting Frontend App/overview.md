@@ -1,0 +1,1 @@
+React + Vite frontend for a construction subcontractor accounting application, providing dashboards, job costing, time tracking, billing, WIP, payroll, and financials over mock data.

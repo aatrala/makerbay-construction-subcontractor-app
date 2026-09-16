@@ -1,0 +1,6 @@
+- All source imports use the `@/` path alias (e.g. `@/pages/Dashboard`, `@/components/layout/Layout`, `@/types`) instead of relative paths, enabled by the Vite resolve alias.
+- Page navigation is implemented as a single `useState<PageRoute>` in `App.tsx` with a `switch` statement rendering the matching page component, rather than using a router library.
+- Domain shapes are declared once in `src/types/index.ts` as TypeScript interfaces and string-literal unions (e.g. `ProjectStatus`, `CostType`, `PayAppStatus`) and imported by every page that needs them.
+- Pages consume in-memory sample data exclusively from `@/data/mock` and format values through shared helpers in `@/lib/utils` (e.g. `formatCurrency`, `formatPercent`) instead of inline logic.
+- Reusable visual building blocks are extracted into `components/ui` (badge, button, card) and composed by pages, while app-level chrome lives in `components/layout` (Layout, Sidebar).
+- Styling relies on Tailwind utility classes with a custom design-token color palette (e.g. `bg-canvas`, `text-muted`, `border-line`, `bg-signal`) rather than raw hex colors.

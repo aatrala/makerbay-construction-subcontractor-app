@@ -1,0 +1,1 @@
+Development runs via the standard Vite commands inside the `app/` directory (e.g., `npm run dev`), since the root only contains documentation and the single `app/` project.

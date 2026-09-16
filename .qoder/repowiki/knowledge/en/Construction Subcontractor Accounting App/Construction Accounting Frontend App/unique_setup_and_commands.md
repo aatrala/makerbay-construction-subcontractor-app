@@ -1,0 +1,1 @@
+Development and build are run from the `app/` directory using Vite scripts defined in `package.json`: `npm run dev` starts the dev server, `npm run build` runs `tsc` then `vite build`, and `npm run preview` serves the production build locally.

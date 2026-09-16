@@ -1,0 +1,9 @@
+schema_version: 1
+module_path: ""
+title: Construction Subcontractor Accounting App
+scope:
+    - BuildBooks-Product-Spec-Sheet.md
+    - Reusable AI-App Technology and Design Stack Playbook.md
+source_files: []
+depends_on: []
+related_to: []

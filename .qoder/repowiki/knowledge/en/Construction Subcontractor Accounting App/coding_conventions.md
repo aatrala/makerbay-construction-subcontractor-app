@@ -1,0 +1,3 @@
+- Pages are implemented as top-level components under `src/pages/` and composed into the shared Layout/Sidebar shell.
+- Shared UI elements (button, badge, card) live in `src/components/ui` and are reused across pages rather than duplicated inline.
+- Data shapes are centralized in `src/types/index.ts` and consumed uniformly by pages and mock data.

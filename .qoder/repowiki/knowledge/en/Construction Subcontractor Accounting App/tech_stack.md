@@ -1,0 +1,1 @@
+React with TypeScript, Vite as the build tool, and a shared component library pattern under `src/components/ui`; mock data drives all pages instead of an API layer.

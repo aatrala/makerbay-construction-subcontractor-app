@@ -1,0 +1,1 @@
+React 19 + TypeScript + Vite 8 as the build toolchain; Tailwind CSS v4 with `@tailwindcss/vite` plugin; Radix UI primitives (avatar, dialog, dropdown-menu, popover, progress, scroll-area, select, separator, slot, switch, tabs, tooltip); Recharts for charts; Lucide icons; Sonner for toast notifications; Wouter available but not used (navigation is state-driven).
